@@ -49,11 +49,7 @@ extension SearchViewController {
                 guard let obj = try! JSONSerialization.jsonObject(with: data!) as? [String: Any] else {
                     return
                 }
-                guard let items = obj["items"] as? [[String: Any]] else {
-                    return
-                }
-                
-                self.githubAPIModel.repository = items
+                self.githubAPIModel.setRepository(jsonObject: obj)
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }

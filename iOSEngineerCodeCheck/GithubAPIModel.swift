@@ -18,3 +18,14 @@ extension GitHubAPIModel {
         return "https://api.github.com/search/repositories?q=\(searchWord)"
     }
 }
+
+
+extension GitHubAPIModel {
+    func setRepository(jsonObject: [String: Any]){
+        guard let items = jsonObject["items"] as? [[String: Any]] else {
+            print("jsonObjectがnil")
+            return
+        }
+        self.repository = items
+    }
+}

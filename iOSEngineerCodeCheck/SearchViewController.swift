@@ -13,6 +13,7 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
     @IBOutlet weak var searchBar: UISearchBar!
     
     var githubAPIModel = GitHubAPIModel()
+    var repositoryList = [[String: Any]]()
     var tappedCellIndex: Int!
     
     override func viewDidLoad() {
@@ -44,10 +45,14 @@ extension SearchViewController {
         let searchWord = searchBar.text!
         
         if searchWord.count != 0 {
-            let async = { [unowned self] in
-                self.tableView.reloadData()
+            let url = githubAPIModel.getUrl(searchWord: searchWord)
+            githubAPIModel.task = URLSession.shared.dataTask(with: URL(string: url)!) {(data, res, err) in
+                let obj = self.githubAPIModel.jsonObject(data: data)
+                self.repositoryList = self.githubAPIModel.repositoryList(jsonObject: obj)
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
             }
-            githubAPIModel.setTask(searchWord: searchWord, async: async)
             //　リストを更新するため
             githubAPIModel.task?.resume()
         }
@@ -60,7 +65,7 @@ extension SearchViewController {
         
         if segue.identifier == "Detail"{
             let dtl = segue.destination as! RepositoryDetailsViewController
-            dtl.repository = githubAPIModel.repository[tappedCellIndex]
+            dtl.repository = repositoryList[tappedCellIndex]
         }
         
     }
@@ -69,7 +74,7 @@ extension SearchViewController {
 
 extension SearchViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return githubAPIModel.repository.count
+        return repositoryList.count
     }
 }
 
@@ -78,7 +83,7 @@ extension SearchViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = UITableViewCell()
-        let rp = githubAPIModel.repository[indexPath.row]
+        let rp = repositoryList[indexPath.row]
         cell.textLabel?.text = rp["full_name"] as? String ?? ""
         cell.detailTextLabel?.text = rp["language"] as? String ?? ""
         cell.tag = indexPath.row

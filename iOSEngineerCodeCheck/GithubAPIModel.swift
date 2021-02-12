@@ -9,7 +9,7 @@
 import Foundation
 
 class GitHubAPIModel {
-    var repository: [[String: Any]]=[]
+    var repository: [String: Any] = [:]
     var task: URLSessionTask?
 }
 
@@ -44,19 +44,19 @@ extension GitHubAPIModel {
 }
 
 extension GitHubAPIModel {
-    private func getUrl(searchWord: String) -> String {
+   func getUrl(searchWord: String) -> String {
         return "https://api.github.com/search/repositories?q=\(searchWord)"
     }
 }
 
 
 extension GitHubAPIModel {
-    private func repositoryList(jsonObject: [String: Any]){
+    func repositoryList(jsonObject: [String: Any]) -> [[String: Any]]{
         guard let items = jsonObject["items"] as? [[String: Any]] else {
             print("jsonObjectがnil")
-            return
+            return []
         }
-        self.repository = items
+        return items
     }
 }
 

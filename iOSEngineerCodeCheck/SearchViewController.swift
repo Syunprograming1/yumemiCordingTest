@@ -12,11 +12,10 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var repository: [[String: Any]]=[]
-    
-    var task: URLSessionTask?
-    var searchWord: String!
-    var url: String!
+    var githubAPIModel = GitHubAPIModel()
+//    var repository: [[String: Any]]=[]
+//
+//    var task: URLSessionTask?
     var tappedCellIndex: Int!
     
     override func viewDidLoad() {
@@ -38,21 +37,21 @@ extension SearchViewController {
 
 extension SearchViewController {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        task?.cancel()
+        githubAPIModel.task?.cancel()
     }
 }
 
 extension SearchViewController {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
-        searchWord = searchBar.text!
+        let searchWord = searchBar.text!
         
         if searchWord.count != 0 {
-            url = "https://api.github.com/search/repositories?q=\(searchWord!)"
-            task = URLSession.shared.dataTask(with: URL(string: url)!) { (data, res, err) in
+            let url = "https://api.github.com/search/repositories?q=\(searchWord)"
+            githubAPIModel.task = URLSession.shared.dataTask(with: URL(string: url)!) { (data, res, err) in
                 if let obj = try! JSONSerialization.jsonObject(with: data!) as? [String: Any] {
                     if let items = obj["items"] as? [[String: Any]] {
-                        self.repository = items
+                        self.githubAPIModel.repository = items
                         DispatchQueue.main.async {
                             self.tableView.reloadData()
                         }
@@ -60,7 +59,7 @@ extension SearchViewController {
                 }
             }
             // これ呼ばなきゃリストが更新されません
-            task?.resume()
+            githubAPIModel.task?.resume()
         }
         
     }
@@ -71,7 +70,7 @@ extension SearchViewController {
         
         if segue.identifier == "Detail"{
             let dtl = segue.destination as! RepositoryDetailsViewController
-            dtl.repository = repository[tappedCellIndex]
+            dtl.repository = githubAPIModel.repository[tappedCellIndex]
         }
         
     }
@@ -80,7 +79,7 @@ extension SearchViewController {
 
 extension SearchViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return repository.count
+        return githubAPIModel.repository.count
     }
 }
 
@@ -89,7 +88,7 @@ extension SearchViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = UITableViewCell()
-        let rp = repository[indexPath.row]
+        let rp = githubAPIModel.repository[indexPath.row]
         cell.textLabel?.text = rp["full_name"] as? String ?? ""
         cell.detailTextLabel?.text = rp["language"] as? String ?? ""
         cell.tag = indexPath.row

@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SearchViewController.swift
 //  iOSEngineerCodeCheck
 //
 //  Created by 史 翔新 on 2020/04/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UITableViewController, UISearchBarDelegate {
+class SearchViewController: UITableViewController, UISearchBarDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -27,7 +27,7 @@ class ViewController: UITableViewController, UISearchBarDelegate {
     
 }
 
-extension ViewController {
+extension SearchViewController {
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
         // ↓こうすれば初期のテキストを消せる
         searchBar.text = ""
@@ -36,13 +36,13 @@ extension ViewController {
 }
 
 
-extension ViewController {
+extension SearchViewController {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         task?.cancel()
     }
 }
 
-extension ViewController {
+extension SearchViewController {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
         searchWord = searchBar.text!
@@ -66,11 +66,11 @@ extension ViewController {
     }
 }
 
-extension ViewController {
+extension SearchViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "Detail"{
-            let dtl = segue.destination as! ViewController2
+            let dtl = segue.destination as! RepositoryDetailsViewController
             dtl.repository = repository[tappedCellIndex]
         }
         
@@ -78,14 +78,14 @@ extension ViewController {
 }
 
 
-extension ViewController {
+extension SearchViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return repository.count
     }
 }
 
 
-extension ViewController {
+extension SearchViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = UITableViewCell()
@@ -99,7 +99,7 @@ extension ViewController {
 }
 
 
-extension ViewController {
+extension SearchViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // 画面遷移時に呼ばれる
         tappedCellIndex = indexPath.row

@@ -35,6 +35,7 @@ class RepositoryDetailsViewController: UIViewController {
 
 extension RepositoryDetailsViewController {
     private func labelsSetUp(){
+        titleLabel.text = repository["full_name"] as? String
         languageLabel.text = "Written in \(repository["language"] as? String ?? "")"
         stragazersLabel.text = "\(repository["stargazers_count"] as? Int ?? 0) stars"
         wachersLabel.text = "\(repository["wachers_count"] as? Int ?? 0) watchers"
@@ -45,7 +46,7 @@ extension RepositoryDetailsViewController {
 
 extension RepositoryDetailsViewController {
     func getImage(){
-        titleLabel.text = repository["full_name"] as? String
+        
         
         guard let owner = repository["owner"] as? [String: Any] else {
             return

@@ -14,7 +14,7 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
     
     var taskModel = TaskModel()
     var repositoryList = [[String: Any]]()
-    var tappedCellIndex: Int!
+    var tappedCellIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()

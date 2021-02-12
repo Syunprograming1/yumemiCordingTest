@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA9AD88225D62E93009997C7 /* GithubAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9AD88125D62E93009997C7 /* GithubAPIModel.swift */; };
 		AAADC9C225D67C130027AA49 /* RepositoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADC9C125D67C130027AA49 /* RepositoryModel.swift */; };
 		AAADC9C725D67C1E0027AA49 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADC9C625D67C1E0027AA49 /* TaskModel.swift */; };
 		BF0A658D244F2A3B00280FA6 /* RepositoryDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0A658C244F2A3B00280FA6 /* RepositoryDetailsViewController.swift */; };
@@ -39,7 +38,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AA9AD88125D62E93009997C7 /* GithubAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubAPIModel.swift; sourceTree = "<group>"; };
 		AAADC9C125D67C130027AA49 /* RepositoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryModel.swift; sourceTree = "<group>"; };
 		AAADC9C625D67C1E0027AA49 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
 		BF0A658C244F2A3B00280FA6 /* RepositoryDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailsViewController.swift; sourceTree = "<group>"; };
@@ -109,7 +107,6 @@
 			children = (
 				BFD945DE244DC5E80012785A /* AppDelegate.swift */,
 				BFD945E0244DC5E80012785A /* SceneDelegate.swift */,
-				AA9AD88125D62E93009997C7 /* GithubAPIModel.swift */,
 				AAADC9C625D67C1E0027AA49 /* TaskModel.swift */,
 				AAADC9C125D67C130027AA49 /* RepositoryModel.swift */,
 				BFD945E2244DC5E80012785A /* SearchViewController.swift */,
@@ -271,7 +268,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA9AD88225D62E93009997C7 /* GithubAPIModel.swift in Sources */,
 				BFD945E3244DC5E80012785A /* SearchViewController.swift in Sources */,
 				BF0A658D244F2A3B00280FA6 /* RepositoryDetailsViewController.swift in Sources */,
 				AAADC9C225D67C130027AA49 /* RepositoryModel.swift in Sources */,

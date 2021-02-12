@@ -61,13 +61,19 @@ extension GitHubAPIModel {
 }
 
 extension GitHubAPIModel {
+    func jsonObject(data: Optional<Data>) -> [String: Any]{
+        guard let obj = try! JSONSerialization.jsonObject(with: data!) as? [String: Any] else {
+            return [:]
+        }
+        return obj
+    }
+}
+
+extension GitHubAPIModel {
     func setTask(searchWord: String, async: @escaping (() -> Void?)){
         let url = getUrl(searchWord: searchWord)
-        task = URLSession.shared.dataTask(with: URL(string: url)!) { (data, res, err) in
-            print(type(of: data))
-            guard let obj = try! JSONSerialization.jsonObject(with: data!) as? [String: Any] else {
-                return
-            }
+        task = URLSession.shared.dataTask(with: URL(string: url)!) {(data, res, err) in
+            let obj = self.jsonObject(data: data)
             self.repositoryList(jsonObject: obj)
             DispatchQueue.main.async {
                 async()

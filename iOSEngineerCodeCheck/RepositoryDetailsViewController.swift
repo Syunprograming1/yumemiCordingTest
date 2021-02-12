@@ -19,14 +19,14 @@ class RepositoryDetailsViewController: UIViewController {
     @IBOutlet weak var forkLabel: UILabel!
     @IBOutlet weak var issueLabel: UILabel!
     
+    // 画面遷移時に受け取る
     var repository = RepositoryModel(repository: [:])
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         labelsSetUp()
-        getImage()
-        
+        imageViewSetUp()
     }
     
     
@@ -45,8 +45,7 @@ extension RepositoryDetailsViewController {
 }
 
 extension RepositoryDetailsViewController {
-    func getImage(){
-        
+    func imageViewSetUp(){
         let imageURL = repository.elementString(elementType: .imageURL)
         URLSession.shared.dataTask(with: URL(string: imageURL)!) { (data, res, err) in
             let image = UIImage(data: data!)!

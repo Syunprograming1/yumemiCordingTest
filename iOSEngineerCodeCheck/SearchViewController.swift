@@ -12,7 +12,6 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var repositoryModel = RepositoryModel()
     var taskModel = TaskModel()
     var repositoryList = [[String: Any]]()
     var tappedCellIndex: Int!
@@ -66,7 +65,7 @@ extension SearchViewController {
         
         if segue.identifier == "Detail"{
             let dtl = segue.destination as! RepositoryDetailsViewController
-            dtl.repository = repositoryList[tappedCellIndex]
+            dtl.repository = RepositoryModel(repository: repositoryList[tappedCellIndex])
         }
         
     }

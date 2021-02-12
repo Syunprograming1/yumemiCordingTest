@@ -19,7 +19,7 @@ class RepositoryDetailsViewController: UIViewController {
     @IBOutlet weak var forkLabel: UILabel!
     @IBOutlet weak var issueLabel: UILabel!
     
-    var repository: [String: Any] = [:]
+    var repository = RepositoryModel(repository: [:])
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,31 +35,23 @@ class RepositoryDetailsViewController: UIViewController {
 
 extension RepositoryDetailsViewController {
     private func labelsSetUp(){
-        titleLabel.text = RepositoryModel.elementString(repository: repository, elementType: .fullName)
-        languageLabel.text = "Written in \(repository["language"] as? String ?? "")"
-        stragazersLabel.text = "\(repository["stargazers_count"] as? Int ?? 0) stars"
-        wachersLabel.text = "\(repository["wachers_count"] as? Int ?? 0) watchers"
-        forkLabel.text = "\(repository["forks_count"] as? Int ?? 0) forks"
-        issueLabel.text = "\(repository["open_issues_count"] as? Int ?? 0) open issues"
+        titleLabel.text = repository.elementString(elementType: .fullName)
+        languageLabel.text = "Written in" + repository.elementString(elementType: .language)
+        stragazersLabel.text = repository.elementString(elementType: .stargazersCount)  + "stars"
+        wachersLabel.text = repository.elementString(elementType: .wachersCount) + " watchers"
+        forkLabel.text = repository.elementString(elementType: .forksCount)  + "forks"
+        issueLabel.text =  repository.elementString(elementType:  .openIssuesCount) + " open issues"
     }
 }
 
 extension RepositoryDetailsViewController {
     func getImage(){
         
-        
-        guard let owner = repository["owner"] as? [String: Any] else {
-            return
-        }
-        
-        guard let imgURL = owner["avatar_url"] as? String  else {
-            return
-        }
-        
-        URLSession.shared.dataTask(with: URL(string: imgURL)!) { (data, res, err) in
-            let img = UIImage(data: data!)!
+        let imageURL = repository.elementString(elementType: .imageURL)
+        URLSession.shared.dataTask(with: URL(string: imageURL)!) { (data, res, err) in
+            let image = UIImage(data: data!)!
             DispatchQueue.main.async {
-                self.libraryImageView.image = img
+                self.libraryImageView.image = image
             }
         }.resume()
         

@@ -9,8 +9,7 @@
 import UIKit
 
 class ViewController: UITableViewController, UISearchBarDelegate {
-
-
+    
     @IBOutlet weak var searchBar: UISearchBar!
     
     var repository: [[String: Any]]=[]
@@ -22,21 +21,28 @@ class ViewController: UITableViewController, UISearchBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         searchBar.text = "GitHubのリポジトリを検索できるよー"
         searchBar.delegate = self
     }
     
+}
+
+extension ViewController {
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
         // ↓こうすれば初期のテキストを消せる
         searchBar.text = ""
         return true
     }
-    
+}
+
+
+extension ViewController {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         task?.cancel()
     }
-    
+}
+
+extension ViewController {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
         searchWord = searchBar.text!
@@ -46,19 +52,21 @@ class ViewController: UITableViewController, UISearchBarDelegate {
             task = URLSession.shared.dataTask(with: URL(string: url)!) { (data, res, err) in
                 if let obj = try! JSONSerialization.jsonObject(with: data!) as? [String: Any] {
                     if let items = obj["items"] as? [[String: Any]] {
-                    self.repository = items
+                        self.repository = items
                         DispatchQueue.main.async {
                             self.tableView.reloadData()
                         }
                     }
                 }
             }
-        // これ呼ばなきゃリストが更新されません
-        task?.resume()
+            // これ呼ばなきゃリストが更新されません
+            task?.resume()
         }
         
     }
-    
+}
+
+extension ViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "Detail"{
@@ -67,11 +75,17 @@ class ViewController: UITableViewController, UISearchBarDelegate {
         }
         
     }
-    
+}
+
+
+extension ViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return repository.count
     }
-    
+}
+
+
+extension ViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = UITableViewCell()
@@ -82,12 +96,14 @@ class ViewController: UITableViewController, UISearchBarDelegate {
         return cell
         
     }
-    
+}
+
+
+extension ViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // 画面遷移時に呼ばれる
         tappedCellIndex = indexPath.row
         performSegue(withIdentifier: "Detail", sender: self)
         
     }
-    
 }

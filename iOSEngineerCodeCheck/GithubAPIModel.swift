@@ -14,18 +14,35 @@ class GitHubAPIModel {
 }
 
 extension GitHubAPIModel {
-    func url(searchWord: String) -> String {
+    private func getUrl(searchWord: String) -> String {
         return "https://api.github.com/search/repositories?q=\(searchWord)"
     }
 }
 
 
 extension GitHubAPIModel {
-    func setRepository(jsonObject: [String: Any]){
+    private func setRepository(jsonObject: [String: Any]){
         guard let items = jsonObject["items"] as? [[String: Any]] else {
             print("jsonObjectがnil")
             return
         }
         self.repository = items
+    }
+}
+
+extension GitHubAPIModel {
+    func setTask(searchWord: String, async: @escaping (() -> Void?)){
+        let url = getUrl(searchWord: searchWord)
+        task = URLSession.shared.dataTask(with: URL(string: url)!) { (data, res, err) in
+            guard let obj = try! JSONSerialization.jsonObject(with: data!) as? [String: Any] else {
+                return
+            }
+            self.setRepository(jsonObject: obj)
+            DispatchQueue.main.async {
+                async()
+            }
+        }
+        // これ呼ばなきゃリストが更新されません
+        task?.resume()
     }
 }

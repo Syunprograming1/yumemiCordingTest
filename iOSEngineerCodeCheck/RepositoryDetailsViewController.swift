@@ -13,9 +13,7 @@ class RepositoryDetailsViewController: UIViewController {
     @IBOutlet weak var libraryImageView: UIImageView!
     
     @IBOutlet weak var titleLabel: UILabel!
-    
     @IBOutlet weak var languageLabel: UILabel!
-    
     @IBOutlet weak var stragazersLabel: UILabel!
     @IBOutlet weak var wachersLabel: UILabel!
     @IBOutlet weak var forkLabel: UILabel!
@@ -26,15 +24,26 @@ class RepositoryDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        labelsSetUp()
+        getImage()
+        
+    }
+    
+
+    
+}
+
+extension RepositoryDetailsViewController {
+    private func labelsSetUp(){
         languageLabel.text = "Written in \(repository["language"] as? String ?? "")"
         stragazersLabel.text = "\(repository["stargazers_count"] as? Int ?? 0) stars"
         wachersLabel.text = "\(repository["wachers_count"] as? Int ?? 0) watchers"
         forkLabel.text = "\(repository["forks_count"] as? Int ?? 0) forks"
         issueLabel.text = "\(repository["open_issues_count"] as? Int ?? 0) open issues"
-        getImage()
-        
     }
-    
+}
+
+extension RepositoryDetailsViewController {
     func getImage(){
         titleLabel.text = repository["full_name"] as? String
         
@@ -50,5 +59,4 @@ class RepositoryDetailsViewController: UIViewController {
         }
         
     }
-    
 }

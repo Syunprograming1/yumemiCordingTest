@@ -35,7 +35,7 @@ class RepositoryDetailsViewController: UIViewController {
 
 extension RepositoryDetailsViewController {
     private func labelsSetUp(){
-        titleLabel.text = GitHubAPIModel.elementString(repository: repository, elementType: .fullName)
+        titleLabel.text = RepositoryModel.elementString(repository: repository, elementType: .fullName)
         languageLabel.text = "Written in \(repository["language"] as? String ?? "")"
         stragazersLabel.text = "\(repository["stargazers_count"] as? Int ?? 0) stars"
         wachersLabel.text = "\(repository["wachers_count"] as? Int ?? 0) watchers"

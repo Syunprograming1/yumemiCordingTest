@@ -12,7 +12,8 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var githubAPIModel = GitHubAPIModel()
+    var repositoryModel = RepositoryModel()
+    var taskModel = TaskModel()
     var repositoryList = [[String: Any]]()
     var tappedCellIndex: Int!
     
@@ -35,7 +36,7 @@ extension SearchViewController {
 
 extension SearchViewController {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        githubAPIModel.task?.cancel()
+        taskModel.task?.cancel()
     }
 }
 
@@ -45,16 +46,16 @@ extension SearchViewController {
         let searchWord = searchBar.text!
         
         if searchWord.count != 0 {
-            let url = githubAPIModel.getUrl(searchWord: searchWord)
-            githubAPIModel.task = URLSession.shared.dataTask(with: URL(string: url)!) {(data, res, err) in
-                let obj = self.githubAPIModel.jsonObject(data: data)
-                self.repositoryList = self.githubAPIModel.repositoryList(jsonObject: obj)
+            let url = taskModel.getUrl(searchWord: searchWord)
+            taskModel.task = URLSession.shared.dataTask(with: URL(string: url)!) {(data, res, err) in
+                let obj = self.taskModel.jsonObject(data: data)
+                self.repositoryList = self.taskModel.repositoryList(jsonObject: obj)
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
             }
             //　リストを更新するため
-            githubAPIModel.task?.resume()
+            taskModel.task?.resume()
         }
         
     }

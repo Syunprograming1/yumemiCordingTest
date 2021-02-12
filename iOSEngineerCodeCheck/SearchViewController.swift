@@ -48,7 +48,7 @@ extension SearchViewController {
                 self.tableView.reloadData()
             }
             githubAPIModel.setTask(searchWord: searchWord, async: async)
-            // これ呼ばなきゃリストが更新されません
+            //　リストを更新するため
             githubAPIModel.task?.resume()
         }
         

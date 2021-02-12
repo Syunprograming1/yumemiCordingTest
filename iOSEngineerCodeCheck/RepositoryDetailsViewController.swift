@@ -20,7 +20,7 @@ class RepositoryDetailsViewController: UIViewController {
     @IBOutlet weak var issueLabel: UILabel!
     
     var repository: [String: Any] = [:]
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,7 +29,7 @@ class RepositoryDetailsViewController: UIViewController {
         
     }
     
-
+    
     
 }
 
@@ -47,16 +47,20 @@ extension RepositoryDetailsViewController {
     func getImage(){
         titleLabel.text = repository["full_name"] as? String
         
-        if let owner = repository["owner"] as? [String: Any] {
-            if let imgURL = owner["avatar_url"] as? String {
-                URLSession.shared.dataTask(with: URL(string: imgURL)!) { (data, res, err) in
-                    let img = UIImage(data: data!)!
-                    DispatchQueue.main.async {
-                        self.libraryImageView.image = img
-                    }
-                }.resume()
-            }
+        guard let owner = repository["owner"] as? [String: Any] else {
+            return
         }
+        
+        guard let imgURL = owner["avatar_url"] as? String  else {
+            return
+        }
+        
+        URLSession.shared.dataTask(with: URL(string: imgURL)!) { (data, res, err) in
+            let img = UIImage(data: data!)!
+            DispatchQueue.main.async {
+                self.libraryImageView.image = img
+            }
+        }.resume()
         
     }
 }

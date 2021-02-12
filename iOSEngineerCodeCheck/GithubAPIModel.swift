@@ -12,3 +12,9 @@ class GitHubAPIModel {
     var repository: [[String: Any]]=[]
     var task: URLSessionTask?
 }
+
+extension GitHubAPIModel {
+    func url(searchWord: String) -> String {
+        return "https://api.github.com/search/repositories?q=\(searchWord)"
+    }
+}

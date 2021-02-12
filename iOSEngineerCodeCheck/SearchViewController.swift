@@ -13,9 +13,6 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
     @IBOutlet weak var searchBar: UISearchBar!
     
     var githubAPIModel = GitHubAPIModel()
-//    var repository: [[String: Any]]=[]
-//
-//    var task: URLSessionTask?
     var tappedCellIndex: Int!
     
     override func viewDidLoad() {
@@ -47,7 +44,7 @@ extension SearchViewController {
         let searchWord = searchBar.text!
         
         if searchWord.count != 0 {
-            let url = "https://api.github.com/search/repositories?q=\(searchWord)"
+            let url = githubAPIModel.url(searchWord: searchWord)
             githubAPIModel.task = URLSession.shared.dataTask(with: URL(string: url)!) { (data, res, err) in
                 if let obj = try! JSONSerialization.jsonObject(with: data!) as? [String: Any] {
                     if let items = obj["items"] as? [[String: Any]] {

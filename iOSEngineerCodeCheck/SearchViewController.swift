@@ -46,13 +46,16 @@ extension SearchViewController {
         if searchWord.count != 0 {
             let url = githubAPIModel.url(searchWord: searchWord)
             githubAPIModel.task = URLSession.shared.dataTask(with: URL(string: url)!) { (data, res, err) in
-                if let obj = try! JSONSerialization.jsonObject(with: data!) as? [String: Any] {
-                    if let items = obj["items"] as? [[String: Any]] {
-                        self.githubAPIModel.repository = items
-                        DispatchQueue.main.async {
-                            self.tableView.reloadData()
-                        }
-                    }
+                guard let obj = try! JSONSerialization.jsonObject(with: data!) as? [String: Any] else {
+                    return
+                }
+                guard let items = obj["items"] as? [[String: Any]] else {
+                    return
+                }
+                
+                self.githubAPIModel.repository = items
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
                 }
             }
             // これ呼ばなきゃリストが更新されません

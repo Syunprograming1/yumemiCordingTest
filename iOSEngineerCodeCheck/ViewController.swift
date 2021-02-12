@@ -71,7 +71,7 @@ extension ViewController {
         
         if segue.identifier == "Detail"{
             let dtl = segue.destination as! ViewController2
-            dtl.vc1 = self
+            dtl.repository = repository[tappedCellIndex]
         }
         
     }

@@ -8,14 +8,20 @@
 
 import UIKit
 
-class SearchViewController: UIViewController,UITableViewDelegate,UITableViewDataSource, UISearchBarDelegate {
+class SearchViewController: UIViewController,UITableViewDelegate,UISearchBarDelegate {
     
     var searchBar:UISearchBar!
     
     @IBOutlet weak var repositoryTableView: UITableView!
+    var repositoryTableViewDataSorce = SearchViewDataSorce(repositoryList: [])
     
     var taskModel = TaskModel()
-    var repositoryList = [[String: Any]]()
+    
+    var repositoryList : [[String: Any]] = [] {
+        didSet {
+            repositoryTableViewDataSorce.repositoryList = repositoryList
+        }
+    }
     var tappedCellIndex = 0
     
     override func viewDidLoad() {
@@ -78,31 +84,10 @@ extension SearchViewController {
 extension SearchViewController {
     private func repositoryTableViewSetUp(){
         repositoryTableView.delegate = self
-        repositoryTableView.dataSource = self
+        repositoryTableView.dataSource = repositoryTableViewDataSorce
         repositoryTableView.register(UINib(nibName: "RepositoryTableViewCell", bundle: nil), forCellReuseIdentifier: "RepositoryTableViewCell")
     }
 }
-
-
-
-extension SearchViewController {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return repositoryList.count
-    }
-}
-
-
-extension SearchViewController {
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RepositoryTableViewCell", for: indexPath ) as! RepositoryTableViewCell
-        let repository =  RepositoryModel(repository:repositoryList[indexPath.row])
-        cell.setCell(repositoryName: repository.elementString(elementType: .fullName) + "/" + repository.elementString(elementType: .language))
-        return cell
-        
-    }
-}
-
 
 extension SearchViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -45,8 +45,9 @@ extension SearchViewController {
         let searchWord = searchBar.text!
         
         if searchWord.count != 0 {
-            let url = taskModel.getUrl(searchWord: searchWord)
-            taskModel.task = URLSession.shared.dataTask(with: URL(string: url)!) {(data, res, err) in
+            guard let url = taskUrl(searchWord: searchWord) else { return }
+            
+            taskModel.task = URLSession.shared.dataTask(with: url) {(data, res, err) in
                 let obj = self.taskModel.jsonObject(data: data)
                 self.repositoryList = self.taskModel.repositoryList(jsonObject: obj)
                 DispatchQueue.main.async {
@@ -59,6 +60,15 @@ extension SearchViewController {
         
     }
 }
+
+extension SearchViewController {
+    private func taskUrl(searchWord: String) -> URL? {
+        let url = taskModel.getUrl(searchWord: searchWord)
+        return URL(string: url)
+    }
+}
+
+
 
 extension SearchViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

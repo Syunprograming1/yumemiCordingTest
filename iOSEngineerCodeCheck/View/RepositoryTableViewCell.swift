@@ -10,33 +10,38 @@ import UIKit
 
 class RepositoryTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var backView: UIView!
     @IBOutlet weak var repositroyImageView: UIImageView!
-    @IBOutlet weak var repositoryFullName: UILabel!
+    @IBOutlet weak var repositoryButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        backViewSetUp()
+        repositoryButtonSetUp()
+        repositoryImageViewSetUp()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-    
 }
 
 extension RepositoryTableViewCell {
-    private func backViewSetUp(){
-        backView.backgroundColor = .white
-        backView.layer.cornerRadius = 5
-        backView.setShadow()
+    private func repositoryButtonSetUp(){
+        repositoryButton.backgroundColor = .white
+        repositoryButton.layer.cornerRadius = 5
+        repositoryButton.setShadow()
+    }
+}
+
+extension RepositoryTableViewCell {
+    private func repositoryImageViewSetUp(){
+        repositroyImageView.toCircle()
     }
 }
 
 extension RepositoryTableViewCell {
     func setCell(image: UIImage,repositoryName: String){
         repositroyImageView.image = image
-        repositoryFullName.text = repositoryName
+        repositoryButton.setTitle(repositoryName, for: .normal)
     }
 }

@@ -14,15 +14,14 @@ class SearchViewController: UIViewController,UITableViewDelegate,UISearchBarDele
     
     @IBOutlet weak var repositoryTableView: UITableView!
     var repositoryTableViewDataSorce = SearchViewDataSorce(repositoryList: [])
-    
-    var taskModel = TaskModel()
-    
     var repositoryList : [[String: Any]] = [] {
         didSet {
             repositoryTableViewDataSorce.repositoryList = repositoryList
         }
     }
     var tappedCellIndex = 0
+    
+    var taskModel = TaskModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +30,16 @@ class SearchViewController: UIViewController,UITableViewDelegate,UISearchBarDele
     }
     
 }
+
+
+extension SearchViewController {
+    private func taskUrl(searchWord: String) -> URL? {
+        let url = taskModel.getUrl(searchWord: searchWord)
+        return URL(string: url)
+    }
+}
+
+// --- searchBar関係
 
 extension SearchViewController {
     func searchBarSetUp(){
@@ -74,12 +83,7 @@ extension SearchViewController {
     }
 }
 
-extension SearchViewController {
-    private func taskUrl(searchWord: String) -> URL? {
-        let url = taskModel.getUrl(searchWord: searchWord)
-        return URL(string: url)
-    }
-}
+// --- TableView関係
 
 extension SearchViewController {
     private func repositoryTableViewSetUp(){

@@ -55,3 +55,9 @@ extension RepositoryModel {
     }
 }
 
+extension RepositoryModel {
+    func imageUrl() -> URL? {
+        let imageURL = self.elementString(elementType: .imageURL)
+        return URL(string: imageURL)
+    }
+}

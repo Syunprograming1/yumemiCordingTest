@@ -28,9 +28,6 @@ class RepositoryDetailsViewController: UIViewController {
         labelsSetUp()
         imageViewSetUp()
     }
-    
-    
-    
 }
 
 extension RepositoryDetailsViewController {
@@ -46,7 +43,7 @@ extension RepositoryDetailsViewController {
 
 extension RepositoryDetailsViewController {
     func imageViewSetUp(){
-        guard let imageUrl = imageUrl() else { return }
+        guard let imageUrl = repository.imageUrl() else { return }
         
         URLSession.shared.dataTask(with: imageUrl) { (data, res, err) in
             guard let data = data else { return }
@@ -57,12 +54,5 @@ extension RepositoryDetailsViewController {
             }
         }.resume()
         
-    }
-}
-
-extension RepositoryDetailsViewController {
-    private func imageUrl() -> URL? {
-        let imageURL = repository.elementString(elementType: .imageURL)
-        return URL(string: imageURL)
     }
 }

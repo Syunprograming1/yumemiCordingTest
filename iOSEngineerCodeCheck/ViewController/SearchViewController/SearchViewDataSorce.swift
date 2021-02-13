@@ -27,25 +27,10 @@ extension SearchViewDataSorce : UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RepositoryTableViewCell", for: indexPath ) as! RepositoryTableViewCell
         
         let repository =  RepositoryModel(repository:repositoryList[indexPath.row])
-        repositoryImage(repository: repository, imageSetiing: {(image) in
+        repository.imageSeting(imageSetiing: {(image) in
             let cellText = repository.elementString(elementType: .fullName) + "/" + repository.elementString(elementType: .language)
             cell.setCell(image: image, repositoryName: cellText)
         })
         return cell
-    }
-}
-
-extension SearchViewDataSorce {
-    private func repositoryImage(repository: RepositoryModel, imageSetiing: ((UIImage) -> Void)?) {
-        var image = UIImage()
-        guard let imageUrl = repository.imageUrl() else { return}
-        
-        URLSession.shared.dataTask(with: imageUrl) { (data, res, err) in
-            guard let data = data else { return }
-            image = UIImage(data: data) ?? UIImage()
-            DispatchQueue.main.async {
-                imageSetiing?(image)
-            }
-        }.resume()
     }
 }

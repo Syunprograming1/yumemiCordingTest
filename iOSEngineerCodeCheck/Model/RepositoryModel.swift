@@ -6,7 +6,7 @@
 //  Copyright © 2021 YUMEMI Inc. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 // リポジトリのモデルで使いたい時に変換して使う
 class  RepositoryModel {
@@ -59,5 +59,20 @@ extension RepositoryModel {
     func imageUrl() -> URL? {
         let imageURL = self.elementString(elementType: .imageURL)
         return URL(string: imageURL)
+    }
+}
+
+extension RepositoryModel {
+    func imageSeting(imageSetiing: ((UIImage) -> Void)?) {
+        var image = UIImage()
+        guard let imageUrl = imageUrl() else { return}
+        
+        URLSession.shared.dataTask(with: imageUrl) { (data, res, err) in
+            guard let data = data else { return }
+            image = UIImage(data: data) ?? UIImage()
+            DispatchQueue.main.async {
+                imageSetiing?(image)
+            }
+        }.resume()
     }
 }

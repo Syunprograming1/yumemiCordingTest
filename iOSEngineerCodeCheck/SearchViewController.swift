@@ -104,11 +104,10 @@ extension SearchViewController {
 }
 
 
-//extension SearchViewController {
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        // 画面遷移時に呼ばれる
-//        tappedCellIndex = indexPath.row
-//        performSegue(withIdentifier: "Detail", sender: self)
-//
-//    }
-//}
+extension SearchViewController {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let repositoryDetailsView = self.storyboard!.instantiateViewController(identifier: "RepositoryDetais") as! RepositoryDetailsViewController
+        repositoryDetailsView.repository = RepositoryModel(repository: repositoryList[indexPath.row])
+        self.navigationController?.pushViewController(repositoryDetailsView, animated: true)
+    }
+}

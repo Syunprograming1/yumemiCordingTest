@@ -18,15 +18,11 @@ class RepositoryTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         backViewSetUp()
-        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
     }
-    
     
 }
 
@@ -37,7 +33,6 @@ extension RepositoryTableViewCell {
         backView.setShadow()
     }
 }
-
 
 extension RepositoryTableViewCell {
     func setCell(image: UIImage,repositoryName: String){

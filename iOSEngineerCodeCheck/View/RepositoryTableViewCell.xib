@@ -11,28 +11,27 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="132" id="KGk-i7-Jjw" customClass="RepositoryTableViewCell" customModule="iOSEngineerCodeCheck" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="264" height="132"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="79" id="KGk-i7-Jjw" customClass="RepositoryTableViewCell" customModule="iOSEngineerCodeCheck" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="262" height="79"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="264" height="132"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="262" height="79"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CPX-Li-6eU">
-                        <rect key="frame" x="21" y="16" width="222" height="103"/>
+                        <rect key="frame" x="21" y="16" width="220" height="50"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="m01-2N-onu">
-                                <rect key="frame" x="0.0" y="0.0" width="222" height="103"/>
+                                <rect key="frame" x="5" y="0.0" width="215" height="50"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9JX-hq-ept">
-                                        <rect key="frame" x="0.0" y="0.0" width="30" height="103"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="30" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="Kde-tA-xFN"/>
-                                            <constraint firstAttribute="height" constant="30" id="eK2-ua-G8d"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Prn-9Z-rvV">
-                                        <rect key="frame" x="35" y="0.0" width="187" height="103"/>
+                                        <rect key="frame" x="35" y="0.0" width="180" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -44,7 +43,8 @@
                         <constraints>
                             <constraint firstItem="m01-2N-onu" firstAttribute="top" secondItem="CPX-Li-6eU" secondAttribute="top" id="49u-fC-arX"/>
                             <constraint firstAttribute="trailing" secondItem="m01-2N-onu" secondAttribute="trailing" id="GIP-k4-5nj"/>
-                            <constraint firstItem="m01-2N-onu" firstAttribute="leading" secondItem="CPX-Li-6eU" secondAttribute="leading" id="kTc-Wc-rEI"/>
+                            <constraint firstAttribute="height" constant="50" id="JvP-la-McR"/>
+                            <constraint firstItem="m01-2N-onu" firstAttribute="leading" secondItem="CPX-Li-6eU" secondAttribute="leading" constant="5" id="QM4-Hr-DX2"/>
                             <constraint firstAttribute="bottom" secondItem="m01-2N-onu" secondAttribute="bottom" id="lQV-28-IFE"/>
                         </constraints>
                     </view>
@@ -63,7 +63,7 @@
                 <outlet property="repositoryFullName" destination="Prn-9Z-rvV" id="U6r-eN-Wl1"/>
                 <outlet property="repositroyImageView" destination="9JX-hq-ept" id="Ox2-bw-CnZ"/>
             </connections>
-            <point key="canvasLocation" x="-1471.0144927536232" y="66.294642857142861"/>
+            <point key="canvasLocation" x="-1110" y="0.0"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -20,7 +20,6 @@ class SearchViewController: UIViewController,UITableViewDelegate,UISearchBarDele
         }
     }
     var tappedCellIndex = 0
-    
     var task: URLSessionTask?
     
     override func viewDidLoad() {

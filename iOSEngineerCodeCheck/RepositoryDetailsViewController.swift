@@ -46,13 +46,23 @@ extension RepositoryDetailsViewController {
 
 extension RepositoryDetailsViewController {
     func imageViewSetUp(){
-        let imageURL = repository.elementString(elementType: .imageURL)
-        URLSession.shared.dataTask(with: URL(string: imageURL)!) { (data, res, err) in
-            let image = UIImage(data: data!)!
+        guard let imageUrl = imageUrl() else { return }
+        
+        URLSession.shared.dataTask(with: imageUrl) { (data, res, err) in
+            guard let data = data else { return }
+            
+            let image = UIImage(data: data)
             DispatchQueue.main.async {
                 self.libraryImageView.image = image
             }
         }.resume()
         
+    }
+}
+
+extension RepositoryDetailsViewController {
+    private func imageUrl() -> URL? {
+        let imageURL = repository.elementString(elementType: .imageURL)
+        return URL(string: imageURL)
     }
 }

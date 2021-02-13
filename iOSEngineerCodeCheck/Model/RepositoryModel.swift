@@ -8,6 +8,7 @@
 
 import Foundation
 
+// リポジトリのモデルで使いたい時に変換して使う
 class  RepositoryModel {
     var repository: [String: Any] = [:]
     

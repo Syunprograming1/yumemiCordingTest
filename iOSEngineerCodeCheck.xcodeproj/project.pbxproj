@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA1BC9F325D7667800E05385 /* RepositoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BC9F125D7667800E05385 /* RepositoryTableViewCell.swift */; };
+		AA1BC9F425D7667800E05385 /* RepositoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA1BC9F225D7667800E05385 /* RepositoryTableViewCell.xib */; };
+		AA4F6A3B25D75D8A002B9050 /* SearchViewDataSorce.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4F6A3A25D75D8A002B9050 /* SearchViewDataSorce.swift */; };
 		AAADC9C225D67C130027AA49 /* RepositoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADC9C125D67C130027AA49 /* RepositoryModel.swift */; };
 		AAADC9C725D67C1E0027AA49 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADC9C625D67C1E0027AA49 /* TaskModel.swift */; };
 		BF0A658D244F2A3B00280FA6 /* RepositoryDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0A658C244F2A3B00280FA6 /* RepositoryDetailsViewController.swift */; };
@@ -38,6 +41,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AA1BC9F125D7667800E05385 /* RepositoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTableViewCell.swift; sourceTree = "<group>"; };
+		AA1BC9F225D7667800E05385 /* RepositoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RepositoryTableViewCell.xib; sourceTree = "<group>"; };
+		AA4F6A3A25D75D8A002B9050 /* SearchViewDataSorce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewDataSorce.swift; sourceTree = "<group>"; };
 		AAADC9C125D67C130027AA49 /* RepositoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryModel.swift; sourceTree = "<group>"; };
 		AAADC9C625D67C1E0027AA49 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
 		BF0A658C244F2A3B00280FA6 /* RepositoryDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailsViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +88,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA4F6A3925D75D54002B9050 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AAADC9C625D67C1E0027AA49 /* TaskModel.swift */,
+				AAADC9C125D67C130027AA49 /* RepositoryModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		BFD945D2244DC5E80012785A = {
 			isa = PBXGroup;
 			children = (
@@ -107,9 +122,11 @@
 			children = (
 				BFD945DE244DC5E80012785A /* AppDelegate.swift */,
 				BFD945E0244DC5E80012785A /* SceneDelegate.swift */,
-				AAADC9C625D67C1E0027AA49 /* TaskModel.swift */,
-				AAADC9C125D67C130027AA49 /* RepositoryModel.swift */,
+				AA4F6A3925D75D54002B9050 /* Model */,
 				BFD945E2244DC5E80012785A /* SearchViewController.swift */,
+				AA4F6A3A25D75D8A002B9050 /* SearchViewDataSorce.swift */,
+				AA1BC9F125D7667800E05385 /* RepositoryTableViewCell.swift */,
+				AA1BC9F225D7667800E05385 /* RepositoryTableViewCell.xib */,
 				BF0A658C244F2A3B00280FA6 /* RepositoryDetailsViewController.swift */,
 				BFD945E4244DC5E80012785A /* Main.storyboard */,
 				BFD945E7244DC5EB0012785A /* Assets.xcassets */,
@@ -244,6 +261,7 @@
 				BFD945EB244DC5EB0012785A /* LaunchScreen.storyboard in Resources */,
 				BFD945E8244DC5EB0012785A /* Assets.xcassets in Resources */,
 				BFD945E6244DC5E80012785A /* Main.storyboard in Resources */,
+				AA1BC9F425D7667800E05385 /* RepositoryTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,9 +289,11 @@
 				BFD945E3244DC5E80012785A /* SearchViewController.swift in Sources */,
 				BF0A658D244F2A3B00280FA6 /* RepositoryDetailsViewController.swift in Sources */,
 				AAADC9C225D67C130027AA49 /* RepositoryModel.swift in Sources */,
+				AA1BC9F325D7667800E05385 /* RepositoryTableViewCell.swift in Sources */,
 				BFD945DF244DC5E80012785A /* AppDelegate.swift in Sources */,
 				BFD945E1244DC5E80012785A /* SceneDelegate.swift in Sources */,
 				AAADC9C725D67C1E0027AA49 /* TaskModel.swift in Sources */,
+				AA4F6A3B25D75D8A002B9050 /* SearchViewDataSorce.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

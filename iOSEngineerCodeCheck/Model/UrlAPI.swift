@@ -9,18 +9,14 @@
 import Foundation
 
 
-class TaskModel {
-    var task: URLSessionTask?
-}
-
-extension TaskModel {
-   private func urlString(searchWord: String) -> String {
+class UrlAPI {
+    static func urlString(searchWord: String) -> String {
         return "https://api.github.com/search/repositories?q=\(searchWord)"
     }
 }
 
-extension TaskModel {
-    func getUrl(searchWord: String) -> URL? {
+extension UrlAPI {
+    static func getUrl(searchWord: String) -> URL? {
         let url = urlString(searchWord: searchWord)
         return URL(string: url)
     }
@@ -28,8 +24,8 @@ extension TaskModel {
 
 
 
-extension TaskModel {
-    func repositoryList(jsonObject: [String: Any]) -> [[String: Any]]{
+extension UrlAPI {
+    static func repositoryList(jsonObject: [String: Any]) -> [[String: Any]]{
         guard let items = jsonObject["items"] as? [[String: Any]] else {
             print("jsonObjectがnil")
             return []
@@ -38,8 +34,8 @@ extension TaskModel {
     }
 }
 
-extension TaskModel {
-    func jsonObject(data: Optional<Data>) -> [String: Any]{
+extension UrlAPI {
+    static func jsonObject(data: Optional<Data>) -> [String: Any]{
         guard let obj = try! JSONSerialization.jsonObject(with: data!) as? [String: Any] else {
             return [:]
         }

@@ -21,7 +21,7 @@ class SearchViewController: UIViewController,UITableViewDelegate,UISearchBarDele
     }
     var tappedCellIndex = 0
     
-    var taskModel = TaskModel()
+    var task: URLSessionTask?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +50,7 @@ extension SearchViewController {
 
 extension SearchViewController {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        taskModel.task?.cancel()
+        task?.cancel()
     }
 }
 
@@ -59,16 +59,16 @@ extension SearchViewController {
         let searchWord = searchBar.text!
         
         if searchWord.count != 0 {
-            guard let url = taskModel.getUrl(searchWord: searchWord) else { return }
-            taskModel.task = URLSession.shared.dataTask(with: url) {(data, res, err) in
-                let obj = self.taskModel.jsonObject(data: data)
-                self.repositoryList = self.taskModel.repositoryList(jsonObject: obj)
+            guard let url = UrlAPI.getUrl(searchWord: searchWord) else { return }
+            task = URLSession.shared.dataTask(with: url) {(data, res, err) in
+                let obj = UrlAPI.jsonObject(data: data)
+                self.repositoryList = UrlAPI.repositoryList(jsonObject: obj)
                 DispatchQueue.main.async {
                     self.repositoryTableView.reloadData()
                 }
             }
             //　リストを更新するため
-            taskModel.task?.resume()
+            task?.resume()
         }
         
     }

@@ -60,7 +60,6 @@ extension SearchViewController {
         
         if searchWord.count != 0 {
             guard let url = taskModel.getUrl(searchWord: searchWord) else { return }
-            
             taskModel.task = URLSession.shared.dataTask(with: url) {(data, res, err) in
                 let obj = self.taskModel.jsonObject(data: data)
                 self.repositoryList = self.taskModel.repositoryList(jsonObject: obj)

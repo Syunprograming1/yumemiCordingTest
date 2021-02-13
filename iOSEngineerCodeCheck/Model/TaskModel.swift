@@ -14,7 +14,7 @@ class TaskModel {
 }
 
 extension TaskModel {
-   func urlString(searchWord: String) -> String {
+   private func urlString(searchWord: String) -> String {
         return "https://api.github.com/search/repositories?q=\(searchWord)"
     }
 }

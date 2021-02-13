@@ -42,7 +42,7 @@ extension RepositoryDetailsViewController {
 }
 
 extension RepositoryDetailsViewController {
-    func imageViewSetUp(){
+    private func imageViewSetUp(){
         repository.imageSeting(imageSetiing: {(image) in
             self.libraryImageView.image = image
         })

@@ -9,10 +9,10 @@
 import UIKit
 
 class SearchViewDataSorce: NSObject {
-    var repositoryList : [[String: Any]]
+    var repositoryList : [RepositoryModel]
     var cellDidSelect: ((IndexPath) -> Void)?
     
-    init(repositoryList: [[String: Any]]){
+    init(repositoryList: [RepositoryModel]){
         self.repositoryList = repositoryList
     }
 }
@@ -26,7 +26,7 @@ extension SearchViewDataSorce : UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RepositoryTableViewCell", for: indexPath ) as! RepositoryTableViewCell
         
-        let repository =  RepositoryModel(repository:repositoryList[indexPath.row])
+        let repository = repositoryList[indexPath.row]
         repository.imageSeting(imageSetiing: {(image) in
             let cellText = repository.elementString(elementType: .fullName) + "/" + repository.elementString(elementType: .language)
             cell.setCell(image: image, repositoryName: cellText)

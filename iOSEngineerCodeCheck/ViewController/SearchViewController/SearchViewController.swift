@@ -14,7 +14,7 @@ class SearchViewController: UIViewController,UITableViewDelegate,UISearchBarDele
     
     @IBOutlet weak var repositoryTableView: UITableView!
     var repositoryTableViewDataSorce = SearchViewDataSorce(repositoryList: [])
-    var repositoryList : [[String: Any]] = [] {
+    var repositoryList : [RepositoryModel] = [] {
         didSet {
             repositoryTableViewDataSorce.repositoryList = repositoryList
         }
@@ -87,7 +87,7 @@ extension SearchViewController {
 extension SearchViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let repositoryDetailsView = self.storyboard!.instantiateViewController(identifier: "RepositoryDetais") as! RepositoryDetailsViewController
-        repositoryDetailsView.repository = RepositoryModel(repository: repositoryList[indexPath.row])
+        repositoryDetailsView.repository = repositoryList[indexPath.row]
         self.navigationController?.pushViewController(repositoryDetailsView, animated: true)
     }
 }

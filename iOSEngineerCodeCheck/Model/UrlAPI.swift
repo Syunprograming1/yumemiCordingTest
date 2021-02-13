@@ -25,12 +25,23 @@ extension UrlAPI {
 
 
 extension UrlAPI {
-    static func repositoryList(jsonObject: [String: Any]) -> [[String: Any]]{
+    static func itemsList(jsonObject: [String: Any]) -> [[String: Any]]{
         guard let items = jsonObject["items"] as? [[String: Any]] else {
             print("jsonObjectがnil")
             return []
         }
         return items
+    }
+}
+
+// itemListを自作のRepositoryListModelに変換する
+extension UrlAPI {
+    static func repositoryList(jsonObject: [String: Any]) -> [RepositoryModel]{
+        var repositoryList = [RepositoryModel]()
+        itemsList(jsonObject: jsonObject).forEach{
+            repositoryList.append(RepositoryModel(repository: $0))
+        }
+        return repositoryList
     }
 }
 

@@ -43,16 +43,8 @@ extension RepositoryDetailsViewController {
 
 extension RepositoryDetailsViewController {
     func imageViewSetUp(){
-        guard let imageUrl = repository.imageUrl() else { return }
-        
-        URLSession.shared.dataTask(with: imageUrl) { (data, res, err) in
-            guard let data = data else { return }
-            
-            let image = UIImage(data: data)
-            DispatchQueue.main.async {
-                self.libraryImageView.image = image
-            }
-        }.resume()
-        
+        repository.imageSeting(imageSetiing: {(image) in
+            self.libraryImageView.image = image
+        })
     }
 }

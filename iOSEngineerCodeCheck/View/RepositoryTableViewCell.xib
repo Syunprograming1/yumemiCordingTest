@@ -17,7 +17,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="255" height="58"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8h6-av-vNm">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8h6-av-vNm">
                         <rect key="frame" x="10" y="7" width="235" height="45"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="45" id="q46-KL-KCh"/>
@@ -48,7 +48,7 @@
                 <outlet property="repositoryButton" destination="8h6-av-vNm" id="5oM-l8-lgf"/>
                 <outlet property="repositroyImageView" destination="oGL-WI-p92" id="1dS-Ax-0UO"/>
             </connections>
-            <point key="canvasLocation" x="-509.4202898550725" y="-19.419642857142858"/>
+            <point key="canvasLocation" x="-740" y="-29"/>
         </tableViewCell>
     </objects>
 </document>

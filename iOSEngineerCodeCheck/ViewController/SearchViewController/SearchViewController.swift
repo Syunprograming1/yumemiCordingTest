@@ -79,6 +79,7 @@ extension SearchViewController {
         repositoryTableView.delegate = self
         repositoryTableView.dataSource = repositoryTableViewDataSorce
         repositoryTableView.register(UINib(nibName: "RepositoryTableViewCell", bundle: nil), forCellReuseIdentifier: "RepositoryTableViewCell")
+        repositoryTableView.tableFooterView = UIView()
     }
 }
 

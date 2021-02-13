@@ -60,13 +60,12 @@ extension SearchViewController {
         
         if searchWord.count != 0 {
             guard let url = UrlAPI.getUrl(searchWord: searchWord) else { return }
-            task = URLSession.shared.dataTask(with: url) {(data, res, err) in
-                let obj = UrlAPI.jsonObject(data: data)
-                self.repositoryList = UrlAPI.repositoryList(jsonObject: obj)
+            task = UrlAPI.settingRepositoryList(url: url, setting: {(reposiryModelList) in
+                self.repositoryList = reposiryModelList
                 DispatchQueue.main.async {
                     self.repositoryTableView.reloadData()
                 }
-            }
+            })
             //　リストを更新するため
             task?.resume()
         }

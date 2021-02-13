@@ -54,3 +54,12 @@ extension UrlAPI {
     }
 }
 
+// URlSessionTaskを更新し、repotoryListを入れる
+extension UrlAPI {
+    static func settingRepositoryList(url: URL, setting: (([RepositoryModel]) -> Void)?) -> URLSessionTask{
+        return URLSession.shared.dataTask(with: url) {(data, res, err) in
+            let obj = UrlAPI.jsonObject(data: data)
+            setting?(UrlAPI.repositoryList(jsonObject: obj))
+        }
+    }
+}

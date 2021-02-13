@@ -31,14 +31,6 @@ class SearchViewController: UIViewController,UITableViewDelegate,UISearchBarDele
     
 }
 
-
-extension SearchViewController {
-    private func taskUrl(searchWord: String) -> URL? {
-        let url = taskModel.getUrl(searchWord: searchWord)
-        return URL(string: url)
-    }
-}
-
 // --- searchBar関係
 
 extension SearchViewController {
@@ -67,7 +59,7 @@ extension SearchViewController {
         let searchWord = searchBar.text!
         
         if searchWord.count != 0 {
-            guard let url = taskUrl(searchWord: searchWord) else { return }
+            guard let url = taskModel.getUrl(searchWord: searchWord) else { return }
             
             taskModel.task = URLSession.shared.dataTask(with: url) {(data, res, err) in
                 let obj = self.taskModel.jsonObject(data: data)

@@ -14,10 +14,18 @@ class TaskModel {
 }
 
 extension TaskModel {
-   func getUrl(searchWord: String) -> String {
+   func urlString(searchWord: String) -> String {
         return "https://api.github.com/search/repositories?q=\(searchWord)"
     }
 }
+
+extension TaskModel {
+    func getUrl(searchWord: String) -> URL? {
+        let url = urlString(searchWord: searchWord)
+        return URL(string: url)
+    }
+}
+
 
 
 extension TaskModel {
@@ -38,3 +46,4 @@ extension TaskModel {
         return obj
     }
 }
+

@@ -47,7 +47,11 @@ extension UrlAPI {
 
 extension UrlAPI {
     static func jsonObject(data: Optional<Data>) -> [String: Any]{
-        guard let obj = try! JSONSerialization.jsonObject(with: data!) as? [String: Any] else {
+        guard  let data = data else {
+            print("dataがnilです")
+            return [:]
+        }
+        guard let obj = try! JSONSerialization.jsonObject(with: data) as? [String: Any] else {
             return [:]
         }
         return obj

@@ -9,13 +9,13 @@
 import Foundation
 
 
-class UrlAPI {
+class GithubAPI {
     static func urlString(searchWord: String) -> String {
         return "https://api.github.com/search/repositories?q=\(searchWord)"
     }
 }
 
-extension UrlAPI {
+extension GithubAPI {
     static func getUrl(searchWord: String) -> URL? {
         let url = urlString(searchWord: searchWord)
         return URL(string: url)
@@ -24,7 +24,7 @@ extension UrlAPI {
 
 
 
-extension UrlAPI {
+extension GithubAPI {
     static func itemsList(jsonObject: [String: Any]) -> [[String: Any]]{
         guard let items = jsonObject["items"] as? [[String: Any]] else {
             print("jsonObjectがnil")
@@ -35,7 +35,7 @@ extension UrlAPI {
 }
 
 // itemListを自作のRepositoryListModelに変換する
-extension UrlAPI {
+extension GithubAPI {
     static func repositoryList(jsonObject: [String: Any]) -> [RepositoryModel]{
         var repositoryList = [RepositoryModel]()
         itemsList(jsonObject: jsonObject).forEach{
@@ -45,7 +45,7 @@ extension UrlAPI {
     }
 }
 
-extension UrlAPI {
+extension GithubAPI {
     static func jsonObject(data: Optional<Data>) -> [String: Any]{
         guard  let data = data else {
             print("dataがnilです")
@@ -59,11 +59,11 @@ extension UrlAPI {
 }
 
 // URlSessionTaskを更新し、repotoryListを入れる
-extension UrlAPI {
+extension GithubAPI {
     static func settingRepositoryList(url: URL, setting: (([RepositoryModel]) -> Void)?) -> URLSessionTask{
         return URLSession.shared.dataTask(with: url) {(data, res, err) in
-            let obj = UrlAPI.jsonObject(data: data)
-            setting?(UrlAPI.repositoryList(jsonObject: obj))
+            let obj = GithubAPI.jsonObject(data: data)
+            setting?(GithubAPI.repositoryList(jsonObject: obj))
         }
     }
 }

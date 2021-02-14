@@ -62,8 +62,8 @@ extension SearchViewController {
         let searchWord = searchBar.text!
         
         if searchWord.count != 0 {
-            guard let url = UrlAPI.getUrl(searchWord: searchWord) else { return }
-            task = UrlAPI.settingRepositoryList(url: url, setting: {(reposiryModelList) in
+            guard let url = GithubAPI.getUrl(searchWord: searchWord) else { return }
+            task = GithubAPI.settingRepositoryList(url: url, setting: {(reposiryModelList) in
                 self.repositoryList = reposiryModelList
                 DispatchQueue.main.async {
                     self.repositoryTableView.reloadData()

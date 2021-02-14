@@ -1,21 +1,23 @@
 # 説明
 
-## リファクタリング
-: 関数はextesionで切り出してviewDidloadがわかりやすい感じにしています。  
-: UIの設定は他でも使えそうなものはextesionにして使っています。  
+
 
 ## アーキテクチャ
 : cocoaMVC
 : GithubAPI とRepositoryModelを作成し,repositoryをRepositoryModelに変換して使用しています。  
 
-## テストコード
-: 簡単なユニットテスト を書いています  
-: jsonのAny型の扱い方、どう書くか分からない部分があり、できるところだけ書きました。  
+## リファクタリング
+: 関数はextesionで切り出してviewDidloadがわかりやすい感じにしています。  
+: UIの設定は他でも使えそうなものはextesionにして使っています。  
 
 ## TableViewのファイル切り出し部分について
 : TableViewDataSorceは別ファイルに切り出しています。   
 : TableViewCellの種類をenumのArrayで持つようにしています。  
 ： enumの配列で設定するようにした理由としては、順番やロジックの変更が後からしやすいからです。（例えば間に広告を入れたいとかの時に、arrayの追加順を変えるだけで変更可能）  
+
+## テストコード
+: 簡単なユニットテスト を書いています  
+: jsonのAny型の扱い方、どう書くか分からない部分があり、できるところだけ書きました。  
 
 ## UIの変更点
 : SearchBarをnavigationBarにセット  

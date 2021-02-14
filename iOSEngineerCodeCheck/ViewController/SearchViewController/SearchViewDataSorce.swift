@@ -9,10 +9,10 @@
 import UIKit
 
 class SearchViewDataSorce: NSObject {
-    var cellData : [SerchViewCellType]
+    var cellData : [SearchViewCellType]
     var cellDidSelect: ((RepositoryModel) -> Void)?
     
-    init(cellData: [SerchViewCellType]){
+    init(cellData: [SearchViewCellType]){
         self.cellData = cellData
     }
 }

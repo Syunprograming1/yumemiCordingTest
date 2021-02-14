@@ -15,7 +15,7 @@ class SearchViewController: UIViewController,UITableViewDelegate,UISearchBarDele
     
     @IBOutlet weak var repositoryTableView: UITableView!
     var repositoryTableViewDataSorce = SearchViewDataSorce(cellData: SearchViewCellData().setData(searchWord: "", repositoryList: []))
-    var cellDataArray : [SerchViewCellType] = []
+    var cellDataArray : [SearchViewCellType] = []
     
     var repositoryList : [RepositoryModel] = [] {
         didSet{

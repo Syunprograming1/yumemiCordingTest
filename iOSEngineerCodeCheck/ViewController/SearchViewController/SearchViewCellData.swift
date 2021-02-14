@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum SerchViewCellType {
+enum SearchViewCellType {
     case repository(repository: RepositoryModel)
     case empty(imageName: String, emptyText: String)
     case notFound(notFoundText: String)
@@ -17,8 +17,8 @@ enum SerchViewCellType {
 // enumでcellの順番を持つようにしてベタがきすると順番を変えたくなったりした時楽なのでこういう感じ（例えば後から広告を入れたくなった時など）
 class SearchViewCellData {
     
-    var cellData = [SerchViewCellType]()
-    func setData(searchWord: String, repositoryList: [RepositoryModel]) -> [SerchViewCellType]{
+    var cellData = [SearchViewCellType]()
+    func setData(searchWord: String, repositoryList: [RepositoryModel]) -> [SearchViewCellType]{
         // 空白の時(最初）
         if searchWord == "" {
             appendEmpty()

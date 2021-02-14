@@ -17,7 +17,7 @@ class EmptyTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         self.backgroundColor = .veryLitleGray
-        showImage.tintColor = .veryLitleGray
+        showImage.tintColor = .systemGray3
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -27,9 +27,8 @@ class EmptyTableViewCell: UITableViewCell {
     }
     
     
-    func setCell(image: UIImage, showText: String){
-        showImage.image = image
+    func setCell(imageName: String, showText: String){
+        showImage.image = UIImage(systemName: imageName)
         showTextLabel.text = showText
-        
     }
 }

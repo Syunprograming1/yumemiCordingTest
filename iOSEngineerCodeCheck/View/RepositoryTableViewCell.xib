@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8h6-av-vNm">
-                        <rect key="frame" x="10" y="7" width="235" height="45"/>
+                        <rect key="frame" x="15" y="7" width="225" height="45"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="45" id="q46-KL-KCh"/>
                         </constraints>
@@ -27,7 +27,7 @@
                         </state>
                     </button>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oGL-WI-p92">
-                        <rect key="frame" x="15" y="13" width="35" height="35"/>
+                        <rect key="frame" x="20" y="13" width="35" height="35"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="35" id="YC9-jW-FAk"/>
                             <constraint firstAttribute="height" constant="35" id="dUK-eJ-Mqk"/>
@@ -35,13 +35,13 @@
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="oGL-WI-p92" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="0B6-5h-hzO"/>
+                    <constraint firstAttribute="trailing" secondItem="8h6-av-vNm" secondAttribute="trailing" constant="15" id="6hb-WS-7xU"/>
+                    <constraint firstItem="oGL-WI-p92" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Ms7-YY-xel"/>
                     <constraint firstItem="oGL-WI-p92" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13" id="S1n-r6-786"/>
-                    <constraint firstItem="8h6-av-vNm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="W3H-g6-7ah"/>
                     <constraint firstAttribute="bottom" secondItem="oGL-WI-p92" secondAttribute="bottom" constant="13" id="X0S-dH-po4"/>
                     <constraint firstAttribute="bottom" secondItem="8h6-av-vNm" secondAttribute="bottom" constant="7" id="XJ3-b0-MNV"/>
                     <constraint firstItem="8h6-av-vNm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="kYA-Fi-IZU"/>
-                    <constraint firstAttribute="trailing" secondItem="8h6-av-vNm" secondAttribute="trailing" constant="10" id="qv1-ff-WWI"/>
+                    <constraint firstItem="8h6-av-vNm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="raa-pq-OB1"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -50,7 +50,7 @@
                 <outlet property="repositoryButton" destination="8h6-av-vNm" id="5oM-l8-lgf"/>
                 <outlet property="repositroyImageView" destination="oGL-WI-p92" id="1dS-Ax-0UO"/>
             </connections>
-            <point key="canvasLocation" x="-740" y="-29"/>
+            <point key="canvasLocation" x="-551" y="-1"/>
         </tableViewCell>
     </objects>
 </document>

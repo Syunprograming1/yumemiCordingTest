@@ -9,30 +9,37 @@
 import UIKit
 
 class SearchViewDataSorce: NSObject {
-    var repositoryList : [RepositoryModel]
+    var cellData : [SerchViewCellType]
     var cellDidSelect: ((RepositoryModel) -> Void)?
     
-    init(repositoryList: [RepositoryModel]){
-        self.repositoryList = repositoryList
+    init(cellData: [SerchViewCellType]){
+        self.cellData = cellData
     }
 }
 
 extension SearchViewDataSorce : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return repositoryList.count
+        return cellData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return repositoryTableViewCell(tableView: tableView, indexPath: indexPath)
+        let cellDataType = cellData[indexPath.row]
+        switch cellDataType {
+        case .repository(repository: let repository):
+            return repositoryTableViewCell(repository: repository, tableView: tableView, indexPath: indexPath)
+        case .empty(imageName: let imageName, emptyText: let emptyText):
+            return emptyTableViewCell(imageName: imageName, text: emptyText, tableView: tableView, indexPath: indexPath)
+        case .notFound(notFoundText: let notFoundText):
+            return notFoundTableViewCell(text: notFoundText, tableView: tableView, indexPath: indexPath)
+        }
     }
 }
 
 extension SearchViewDataSorce {
-    private func repositoryTableViewCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+    private func repositoryTableViewCell(repository: RepositoryModel, tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RepositoryTableViewCell", for: indexPath ) as! RepositoryTableViewCell
         
-        let repository = repositoryList[indexPath.row]
         repository.imageSeting(imageSetiing: {(image) in
             let cellText = repository.elementString(elementType: .fullName) + "/" + repository.elementString(elementType: .language)
             cell.setCell(image: image, repositoryName: cellText)
@@ -40,6 +47,24 @@ extension SearchViewDataSorce {
         cell.buttonDidTaped = { [unowned self] in
             cellDidSelect?(repository)
         }
+        return cell
+    }
+}
+
+extension SearchViewDataSorce {
+    private func emptyTableViewCell(imageName: String, text: String, tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyTableViewCell", for: indexPath ) as! EmptyTableViewCell
+        cell.setCell(imageName: imageName, showText: text)
+        return cell
+    }
+}
+
+
+
+extension SearchViewDataSorce {
+    private func notFoundTableViewCell(text: String, tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NotFoundTableViewCell", for: indexPath ) as! NotFoundTableViewCell
+        cell.setCell(notFoundText: text)
         return cell
     }
 }

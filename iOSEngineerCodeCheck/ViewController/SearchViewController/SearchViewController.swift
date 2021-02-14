@@ -11,15 +11,18 @@ import UIKit
 class SearchViewController: UIViewController,UITableViewDelegate,UISearchBarDelegate {
     
     var searchBar:UISearchBar!
+    var searchWord = ""
     
     @IBOutlet weak var repositoryTableView: UITableView!
-    var repositoryTableViewDataSorce = SearchViewDataSorce(repositoryList: [])
+    var repositoryTableViewDataSorce = SearchViewDataSorce(cellData: SearchViewCellData().setData(searchWord: "", repositoryList: []))
+    var cellDataArray : [SerchViewCellType] = []
+    
     var repositoryList : [RepositoryModel] = [] {
-        didSet {
-            repositoryTableViewDataSorce.repositoryList = repositoryList
+        didSet{
+            cellDataArray = SearchViewCellData().setData(searchWord: searchWord, repositoryList: repositoryList)
+            repositoryTableViewDataSorce.cellData = cellDataArray
         }
     }
-    var tappedCellIndex = 0
     var task: URLSessionTask?
     
     override func viewDidLoad() {
@@ -40,7 +43,7 @@ extension SearchViewController {
         if let navigationBarFrame = navigationController?.navigationBar.bounds {
             let searchBar: UISearchBar = UISearchBar(frame: navigationBarFrame)
             searchBar.delegate = self
-            searchBar.placeholder = "GitHubのリポジトリを検索できるよー"
+            searchBar.placeholder = "GitHubのリポジトリを検索"
             searchBar.tintColor = UIColor.gray
             searchBar.keyboardType = UIKeyboardType.default
             searchBar.searchTextField.backgroundColor = .veryLitleGray
@@ -59,19 +62,17 @@ extension SearchViewController {
 
 extension SearchViewController {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        let searchWord = searchBar.text!
+        searchWord = searchBar.text!
         
-        if searchWord.count != 0 {
-            guard let url = GithubAPI.getUrl(searchWord: searchWord) else { return }
-            task = GithubAPI.settingRepositoryList(url: url, setting: {(reposiryModelList) in
-                self.repositoryList = reposiryModelList
-                DispatchQueue.main.async {
-                    self.repositoryTableView.reloadData()
-                }
-            })
-            //　リストを更新するため
-            task?.resume()
-        }
+        guard let url = GithubAPI.getUrl(searchWord: searchWord) else { return }
+        task = GithubAPI.settingRepositoryList(url: url, setting: {(reposiryModelList) in
+            self.repositoryList = reposiryModelList
+            DispatchQueue.main.async {
+                self.repositoryTableView.reloadData()
+            }
+        })
+        //　リストを更新するため
+        task?.resume()
         
     }
 }
@@ -98,7 +99,9 @@ extension SearchViewController {
     private func repositoryTableViewSetUp(){
         repositoryTableView.delegate = self
         repositoryTableView.dataSource = repositoryTableViewDataSorce
-        repositoryTableView.register(UINib(nibName: "RepositoryTableViewCell", bundle: nil), forCellReuseIdentifier: "RepositoryTableViewCell")
+        repositoryTableView.nibRegister(nibName: "RepositoryTableViewCell")
+        repositoryTableView.nibRegister(nibName: "EmptyTableViewCell")
+        repositoryTableView.nibRegister(nibName: "NotFoundTableViewCell")
         
         repositoryTableView.tableFooterView = UIView()
         repositoryTableView.contentInset = UIEdgeInsets(top: 10.0, left: 0, bottom: 0, right: 0)

@@ -100,6 +100,8 @@ extension SearchViewController {
         repositoryTableView.dataSource = repositoryTableViewDataSorce
         repositoryTableView.register(UINib(nibName: "RepositoryTableViewCell", bundle: nil), forCellReuseIdentifier: "RepositoryTableViewCell")
         repositoryTableView.tableFooterView = UIView()
+        //buttonでタップを判断したいのでcellのタップは消しておく
+        repositoryTableView.allowsSelection = false
         repositoryTableView.backgroundColor = .veryLitleGray
     }
 }

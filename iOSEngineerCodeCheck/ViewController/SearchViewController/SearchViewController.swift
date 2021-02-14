@@ -43,6 +43,7 @@ extension SearchViewController {
             searchBar.placeholder = "GitHubのリポジトリを検索できるよー"
             searchBar.tintColor = UIColor.gray
             searchBar.keyboardType = UIKeyboardType.default
+            searchBar.searchTextField.backgroundColor = .veryLitleGray
             navigationItem.titleView = searchBar
             navigationItem.titleView?.frame = searchBar.frame
             self.searchBar = searchBar

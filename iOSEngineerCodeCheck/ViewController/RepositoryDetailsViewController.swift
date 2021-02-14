@@ -10,6 +10,8 @@ import UIKit
 
 class RepositoryDetailsViewController: UIViewController {
     
+    var backBarButtonItem: UIBarButtonItem!
+    
     @IBOutlet weak var libraryImageView: UIImageView!
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -24,9 +26,16 @@ class RepositoryDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         navigationBarSetUp()
+        backBarButtonItemSetUp()
         labelsSetUp()
         imageViewSetUp()
+    }
+    
+    
+    @objc func backButtonDidTaped(_ sender: UIButton){
+        self.navigationController?.popViewController(animated: true)
     }
 }
 
@@ -49,8 +58,23 @@ extension RepositoryDetailsViewController {
     }
 }
 
+// --- navigationbar関係
+
 extension RepositoryDetailsViewController {
     private func navigationBarSetUp(){
         self.navigationController?.navigationBar.commonSetUp()
+    }
+}
+
+extension RepositoryDetailsViewController {
+    private func backBarButtonItemSetUp(){
+        // カスタムの戻るボタンを作成
+        let backButton = UIButton()
+        backButton.setSystemImage(type: .back)
+        backButton.tintColor = .darkGray
+        backButton.addTarget(self, action: #selector(backButtonDidTaped(_:)), for: .touchUpInside)
+        // navigationBarItemに設置
+        backBarButtonItem = UIBarButtonItem(customView: backButton)
+        self.navigationItem.leftBarButtonItem = backBarButtonItem
     }
 }

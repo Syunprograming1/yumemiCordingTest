@@ -12,6 +12,7 @@
 		AA2FE2E225D7963400D3A4A0 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2FE2E125D7963400D3A4A0 /* UIViewExtension.swift */; };
 		AA4F6A3B25D75D8A002B9050 /* SearchViewDataSorce.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4F6A3A25D75D8A002B9050 /* SearchViewDataSorce.swift */; };
 		AA87B3B725D8C37D002A8B49 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA87B3B625D8C37D002A8B49 /* ColorExtension.swift */; };
+		AA9CE72725D8C7FF00708C4A /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9CE72625D8C7FF00708C4A /* ButtonExtension.swift */; };
 		AAA9189525D8C176009D92E4 /* NavigationBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA9189425D8C176009D92E4 /* NavigationBarExtension.swift */; };
 		AAADC9C225D67C130027AA49 /* RepositoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADC9C125D67C130027AA49 /* RepositoryModel.swift */; };
 		AAADC9C725D67C1E0027AA49 /* UrlAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADC9C625D67C1E0027AA49 /* UrlAPI.swift */; };
@@ -50,6 +51,7 @@
 		AA2FE2E125D7963400D3A4A0 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		AA4F6A3A25D75D8A002B9050 /* SearchViewDataSorce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewDataSorce.swift; sourceTree = "<group>"; };
 		AA87B3B625D8C37D002A8B49 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		AA9CE72625D8C7FF00708C4A /* ButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
 		AAA9189425D8C176009D92E4 /* NavigationBarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarExtension.swift; sourceTree = "<group>"; };
 		AAADC9C125D67C130027AA49 /* RepositoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryModel.swift; sourceTree = "<group>"; };
 		AAADC9C625D67C1E0027AA49 /* UrlAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlAPI.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				AAC1A7D425D7F52400FB9497 /* UIImageViewExtension.swift */,
 				AAA9189425D8C176009D92E4 /* NavigationBarExtension.swift */,
 				AA87B3B625D8C37D002A8B49 /* ColorExtension.swift */,
+				AA9CE72625D8C7FF00708C4A /* ButtonExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				BFD945E1244DC5E80012785A /* SceneDelegate.swift in Sources */,
 				AA2FE2E225D7963400D3A4A0 /* UIViewExtension.swift in Sources */,
 				AAADC9C725D67C1E0027AA49 /* UrlAPI.swift in Sources */,
+				AA9CE72725D8C7FF00708C4A /* ButtonExtension.swift in Sources */,
 				AA4F6A3B25D75D8A002B9050 /* SearchViewDataSorce.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

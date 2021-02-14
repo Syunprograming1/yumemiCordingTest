@@ -12,7 +12,7 @@
 
 ## TableViewのファイル切り出し部分について
 : TableViewDataSorceは別ファイルに切り出しています。   
-: TableViewCellの種類をenumのArrayで持つようにしています。  
+: TableViewCellの表示をenumのArrayで持つようにしています。  
 : enumの配列で設定するようにした理由としては、順番やロジックの変更が後からしやすいからです。（例えば間に広告を入れたいとかの時に、arrayの追加順を変えるだけで変更可能）  
 
 ## テストコード

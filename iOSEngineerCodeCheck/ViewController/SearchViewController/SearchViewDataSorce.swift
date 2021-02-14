@@ -10,7 +10,7 @@ import UIKit
 
 class SearchViewDataSorce: NSObject {
     var repositoryList : [RepositoryModel]
-    var cellDidSelect: ((IndexPath) -> Void)?
+    var cellDidSelect: ((RepositoryModel) -> Void)?
     
     init(repositoryList: [RepositoryModel]){
         self.repositoryList = repositoryList
@@ -31,6 +31,9 @@ extension SearchViewDataSorce : UITableViewDataSource {
             let cellText = repository.elementString(elementType: .fullName) + "/" + repository.elementString(elementType: .language)
             cell.setCell(image: image, repositoryName: cellText)
         })
+        cell.buttonDidTaped = { [unowned self] in
+            cellDidSelect?(repository)
+        }
         return cell
     }
 }

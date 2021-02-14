@@ -12,6 +12,7 @@ class RepositoryTableViewCell: UITableViewCell {
     
     @IBOutlet weak var repositroyImageView: UIImageView!
     @IBOutlet weak var repositoryButton: UIButton!
+    var buttonDidTaped: (() -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,6 +24,10 @@ class RepositoryTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
+    @objc func repositoryButtonTaped(_ sender: UIButton){
+        buttonDidTaped?()
+    }
 }
 
 extension RepositoryTableViewCell {
@@ -32,6 +37,7 @@ extension RepositoryTableViewCell {
         repositoryButton.setShadow()
         //　この作りだとimageと重なるので左からずらす
         repositoryButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 50, bottom: 0, right: 0)
+        repositoryButton.addTarget(self, action: #selector(repositoryButtonTaped(_:)), for: .touchUpInside)
     }
 }
 

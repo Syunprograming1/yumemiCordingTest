@@ -24,7 +24,9 @@ class SearchViewController: UIViewController,UITableViewDelegate,UISearchBarDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         searchBarSetUp()
+        dataSorceSetUp()
         repositoryTableViewSetUp()
     }
     
@@ -75,18 +77,26 @@ extension SearchViewController {
 // --- TableView関係
 
 extension SearchViewController {
+    private func dataSorceSetUp(){
+        cellDidSelected()
+    }
+}
+
+extension SearchViewController {
+    private func cellDidSelected(){
+        repositoryTableViewDataSorce.cellDidSelect = { [unowned self] repository in
+            let repositoryDetailsView = self.storyboard!.instantiateViewController(identifier: "RepositoryDetais") as! RepositoryDetailsViewController
+            repositoryDetailsView.repository = repository
+            self.navigationController?.pushViewController(repositoryDetailsView, animated: true)
+        }
+    }
+}
+
+extension SearchViewController {
     private func repositoryTableViewSetUp(){
         repositoryTableView.delegate = self
         repositoryTableView.dataSource = repositoryTableViewDataSorce
         repositoryTableView.register(UINib(nibName: "RepositoryTableViewCell", bundle: nil), forCellReuseIdentifier: "RepositoryTableViewCell")
         repositoryTableView.tableFooterView = UIView()
-    }
-}
-
-extension SearchViewController {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let repositoryDetailsView = self.storyboard!.instantiateViewController(identifier: "RepositoryDetais") as! RepositoryDetailsViewController
-        repositoryDetailsView.repository = repositoryList[indexPath.row]
-        self.navigationController?.pushViewController(repositoryDetailsView, animated: true)
     }
 }

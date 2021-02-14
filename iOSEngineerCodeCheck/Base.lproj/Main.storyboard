@@ -49,22 +49,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gde-5r-huj">
-                                <rect key="frame" x="57" y="94" width="300" height="300"/>
+                                <rect key="frame" x="82" y="94" width="250" height="250"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="0ja-zg-Kwb"/>
-                                    <constraint firstAttribute="height" constant="300" id="enW-1d-ej7"/>
+                                    <constraint firstAttribute="height" constant="250" id="9LM-4E-oAC"/>
+                                    <constraint firstAttribute="width" constant="250" id="DQZ-hF-lvb"/>
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Iim-eb-8Ad">
-                                <rect key="frame" x="57" y="94" width="300" height="300"/>
+                                <rect key="frame" x="82" y="94" width="250" height="250"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="VUk-EK-eTa"/>
-                                    <constraint firstAttribute="width" constant="300" id="kaW-Ph-2En"/>
+                                    <constraint firstAttribute="width" constant="250" id="bm7-YR-x5e"/>
+                                    <constraint firstAttribute="height" constant="250" id="eXj-Xf-sP1"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="oOe-O2-3RS">
-                                <rect key="frame" x="30" y="487.5" width="354" height="120"/>
+                                <rect key="frame" x="30" y="437.5" width="354" height="120"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Language" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s3M-QO-Kom">
                                         <rect key="frame" x="0.0" y="0.0" width="78.5" height="20.5"/>
@@ -103,8 +103,8 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4q1-pG-WSB">
-                                <rect key="frame" x="30" y="424" width="354" height="33.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4q1-pG-WSB">
+                                <rect key="frame" x="30" y="374" width="354" height="33.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <color key="textColor" systemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>

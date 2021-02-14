@@ -31,6 +31,7 @@ class RepositoryDetailsViewController: UIViewController {
         navigationBarSetUp()
         backBarButtonItemSetUp()
         labelsSetUp()
+        // imageviewにシャドウをつけると円が消えるのでシャドウだけのviewを後ろに重ねる
         imageBackViewSetUp()
         imageViewSetUp()
     }

@@ -24,6 +24,12 @@ extension SearchViewDataSorce : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return repositoryTableViewCell(tableView: tableView, indexPath: indexPath)
+    }
+}
+
+extension SearchViewDataSorce {
+    private func repositoryTableViewCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RepositoryTableViewCell", for: indexPath ) as! RepositoryTableViewCell
         
         let repository = repositoryList[indexPath.row]

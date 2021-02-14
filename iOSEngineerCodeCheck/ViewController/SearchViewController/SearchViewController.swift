@@ -25,6 +25,7 @@ class SearchViewController: UIViewController,UITableViewDelegate,UISearchBarDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationBarSetUp()
         searchBarSetUp()
         dataSorceSetUp()
         repositoryTableViewSetUp()
@@ -98,5 +99,14 @@ extension SearchViewController {
         repositoryTableView.dataSource = repositoryTableViewDataSorce
         repositoryTableView.register(UINib(nibName: "RepositoryTableViewCell", bundle: nil), forCellReuseIdentifier: "RepositoryTableViewCell")
         repositoryTableView.tableFooterView = UIView()
+        repositoryTableView.backgroundColor = .veryLitleGray
+    }
+}
+
+
+// --- navigationBar関係
+extension SearchViewController {
+    private func navigationBarSetUp(){
+        self.navigationController?.navigationBar.commonSetUp()
     }
 }

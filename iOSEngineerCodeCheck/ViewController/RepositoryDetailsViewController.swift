@@ -24,7 +24,7 @@ class RepositoryDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationBarSetUp()
         labelsSetUp()
         imageViewSetUp()
     }
@@ -46,5 +46,11 @@ extension RepositoryDetailsViewController {
         repository.imageSeting(imageSetiing: {(image) in
             self.libraryImageView.image = image
         })
+    }
+}
+
+extension RepositoryDetailsViewController {
+    private func navigationBarSetUp(){
+        self.navigationController?.navigationBar.commonSetUp()
     }
 }

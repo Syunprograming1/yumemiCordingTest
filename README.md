@@ -4,26 +4,27 @@
 : 関数はextesionで切り出してviewDidloadがわかりやすい感じにしています。  
 : UIの設定は他でも使えそうなものはextesionにして使っています。  
 
-## アーキテクチャ,VCを軽くする
+## アーキテクチャ
 : cocoaMVC
 : GithubAPI とRepositoryModelを作成し,repositoryをRepositoryModelに変換して使用しています。  
-: TableViewDataSorceは別ファイルに切り出しています。  
+
 
 ## テストコード
 : 簡単なユニットテスト を書いています  
 : jsonのAny型の扱い方、どう書くか分からない部分があり、できるところだけ書きました。  
 
+## TableViewのファイル切り出し部分について
+: TableViewDataSorceは別ファイルに切り出しています。  
+: TableViewCellの種類をenumのArrayで持つようにしています。
+： enumの配列で設定するようにした理由としては、順番やロジックの変更が後からしやすいからです。（例えば間に広告を入れたいとかの時に、arrayの追加順を変えるだけで変更可能）  
+
 ## UIの変更点
 : SearchBarをnavigationBarにセット  
 : 全体的にリッチな感じにしました。  
-上記の変更にあたり、元々のTableViewやSearchControllerを削除し、新しくViewControllerを作成、カスタムセル を作成しました。  
 
 ## 新機能
 : 最初の画面にガイドを追加　(ここに表示されます、上から検索できます)　みたいな  
 : 検索にヒットしなかった時にヒットしなかったことを表示  
-
-※上記の変更のためにそれぞれのカスタムセル を作成し、TableViewCellの種類をenumで持つようにして表示しました。  
-enumで設定した理由としては、順番やロジックの変更が後からしやすいからです。（例えば間に広告を入れたいとか）  
 
 ## 心配な部分
 : エラーハンドリング  

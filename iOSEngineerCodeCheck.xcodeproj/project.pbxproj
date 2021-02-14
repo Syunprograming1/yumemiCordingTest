@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA0EECEB25D9048F008A6A17 /* NotFoundTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0EECE925D9048F008A6A17 /* NotFoundTableViewCell.swift */; };
+		AA0EECEC25D9048F008A6A17 /* NotFoundTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA0EECEA25D9048F008A6A17 /* NotFoundTableViewCell.xib */; };
+		AA0EECF225D90505008A6A17 /* EmptyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0EECF025D90505008A6A17 /* EmptyTableViewCell.swift */; };
+		AA0EECF325D90505008A6A17 /* EmptyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA0EECF125D90505008A6A17 /* EmptyTableViewCell.xib */; };
 		AA1BC9F325D7667800E05385 /* RepositoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BC9F125D7667800E05385 /* RepositoryTableViewCell.swift */; };
 		AA1BC9F425D7667800E05385 /* RepositoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA1BC9F225D7667800E05385 /* RepositoryTableViewCell.xib */; };
 		AA2FE2E225D7963400D3A4A0 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2FE2E125D7963400D3A4A0 /* UIViewExtension.swift */; };
@@ -48,6 +52,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AA0EECE925D9048F008A6A17 /* NotFoundTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotFoundTableViewCell.swift; sourceTree = "<group>"; };
+		AA0EECEA25D9048F008A6A17 /* NotFoundTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotFoundTableViewCell.xib; sourceTree = "<group>"; };
+		AA0EECF025D90505008A6A17 /* EmptyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTableViewCell.swift; sourceTree = "<group>"; };
+		AA0EECF125D90505008A6A17 /* EmptyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyTableViewCell.xib; sourceTree = "<group>"; };
 		AA1BC9F125D7667800E05385 /* RepositoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTableViewCell.swift; sourceTree = "<group>"; };
 		AA1BC9F225D7667800E05385 /* RepositoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RepositoryTableViewCell.xib; sourceTree = "<group>"; };
 		AA2FE2E125D7963400D3A4A0 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -146,6 +154,10 @@
 			children = (
 				AA1BC9F125D7667800E05385 /* RepositoryTableViewCell.swift */,
 				AA1BC9F225D7667800E05385 /* RepositoryTableViewCell.xib */,
+				AA0EECE925D9048F008A6A17 /* NotFoundTableViewCell.swift */,
+				AA0EECEA25D9048F008A6A17 /* NotFoundTableViewCell.xib */,
+				AA0EECF025D90505008A6A17 /* EmptyTableViewCell.swift */,
+				AA0EECF125D90505008A6A17 /* EmptyTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -311,8 +323,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA0EECEC25D9048F008A6A17 /* NotFoundTableViewCell.xib in Resources */,
 				BFD945EB244DC5EB0012785A /* LaunchScreen.storyboard in Resources */,
 				BFD945E8244DC5EB0012785A /* Assets.xcassets in Resources */,
+				AA0EECF325D90505008A6A17 /* EmptyTableViewCell.xib in Resources */,
 				BFD945E6244DC5E80012785A /* Main.storyboard in Resources */,
 				AA1BC9F425D7667800E05385 /* RepositoryTableViewCell.xib in Resources */,
 			);
@@ -339,6 +353,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA0EECEB25D9048F008A6A17 /* NotFoundTableViewCell.swift in Sources */,
 				AAC1A7D525D7F52400FB9497 /* UIImageViewExtension.swift in Sources */,
 				BFD945E3244DC5E80012785A /* SearchViewController.swift in Sources */,
 				BF0A658D244F2A3B00280FA6 /* RepositoryDetailsViewController.swift in Sources */,
@@ -346,6 +361,7 @@
 				AAA9189525D8C176009D92E4 /* NavigationBarExtension.swift in Sources */,
 				AAADC9C225D67C130027AA49 /* RepositoryModel.swift in Sources */,
 				AA1BC9F325D7667800E05385 /* RepositoryTableViewCell.swift in Sources */,
+				AA0EECF225D90505008A6A17 /* EmptyTableViewCell.swift in Sources */,
 				BFD945DF244DC5E80012785A /* AppDelegate.swift in Sources */,
 				BFD945E1244DC5E80012785A /* SceneDelegate.swift in Sources */,
 				AA2FE2E225D7963400D3A4A0 /* UIViewExtension.swift in Sources */,

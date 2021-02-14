@@ -17,6 +17,7 @@ class RepositoryTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        self.backgroundColor = .veryLitleGray
         repositoryButtonSetUp()
         repositoryImageViewSetUp()
     }

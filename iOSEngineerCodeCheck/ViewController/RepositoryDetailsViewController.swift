@@ -12,6 +12,7 @@ class RepositoryDetailsViewController: UIViewController {
     
     var backBarButtonItem: UIBarButtonItem!
     
+    @IBOutlet weak var imageBackView: UIView!
     @IBOutlet weak var libraryImageView: UIImageView!
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -30,6 +31,7 @@ class RepositoryDetailsViewController: UIViewController {
         navigationBarSetUp()
         backBarButtonItemSetUp()
         labelsSetUp()
+        imageBackViewSetUp()
         imageViewSetUp()
     }
     
@@ -51,10 +53,20 @@ extension RepositoryDetailsViewController {
 }
 
 extension RepositoryDetailsViewController {
+    private func imageBackViewSetUp(){
+        imageBackView.setBigShadow()
+        // 重ねているのでゼロにして違和感を消す
+        imageBackView.layer.shadowOffset = .zero
+        imageBackView.layer.cornerRadius = imageBackView.frame.width/2
+    }
+}
+
+extension RepositoryDetailsViewController {
     private func imageViewSetUp(){
         repository.imageSeting(imageSetiing: {(image) in
             self.libraryImageView.image = image
         })
+        libraryImageView.toCircle()
     }
 }
 

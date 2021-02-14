@@ -34,7 +34,7 @@ extension RepositoryTableViewCell {
     private func repositoryButtonSetUp(){
         repositoryButton.backgroundColor = .white
         repositoryButton.layer.cornerRadius = 5
-        repositoryButton.setShadow()
+        repositoryButton.setLitleShadow()
         //　この作りだとimageと重なるので左からずらす
         repositoryButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 50, bottom: 0, right: 0)
         repositoryButton.addTarget(self, action: #selector(repositoryButtonTaped(_:)), for: .touchUpInside)

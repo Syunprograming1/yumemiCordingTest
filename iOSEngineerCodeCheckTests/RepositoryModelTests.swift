@@ -35,9 +35,10 @@ class RepositoryModelTests: XCTestCase {
     }
     
     func testElementString() throws {
-        let owner = createOwner(url: "http")
+        let url = "http"
+        let owner = createOwner(url: url)
         let name = "realm/cocoa"
-        let language = "Swift"
+        let language = "ObjectC"
         let count = 100
         let countString  = "100"
         let repository = createRepositoryModel(name: name, language: language, count: count, owner: owner)
@@ -47,12 +48,19 @@ class RepositoryModelTests: XCTestCase {
         XCTAssertEqual(countString, repository.elementString(elementType: .wachersCount))
         XCTAssertEqual(countString, repository.elementString(elementType: .forksCount))
         XCTAssertEqual(countString, repository.elementString(elementType: .openIssuesCount))
-        XCTAssertEqual("http", repository.elementString(elementType: .imageURL))
+        XCTAssertEqual(url, repository.elementString(elementType: .imageURL))
         
     }
     
     
-    
+    func testImageUrl(){
+        let url = "http"
+        let owner = createOwner(url: url)
+        let repository = createRepositoryModel(name: "realm/cocoa", language: "ObjectC", count: 100, owner: owner)
+        
+        let imageUrl = repository.elementString(elementType: .imageURL)
+        XCTAssertEqual(URL(string: url), URL(string: imageUrl))
+    }
     
     
 }
